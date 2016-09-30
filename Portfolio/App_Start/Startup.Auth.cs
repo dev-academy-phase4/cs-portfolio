@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Configuration;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
+using Microsoft.Owin.Security.Twitter;
 using Owin;
 using Portfolio.Models;
 
@@ -50,19 +53,27 @@ namespace Portfolio
             //    clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseTwitterAuthentication(new TwitterAuthenticationOptions()
+            {
+                ConsumerKey = ConfigurationManager.AppSettings["TwitterConsumerKey"],
+                ConsumerSecret = ConfigurationManager.AppSettings["TwitterConsumerSecret"],
+                CallbackPath = new PathString(ConfigurationManager.AppSettings["TwitterRedirectUri"]),
+                BackchannelCertificateValidator = null
+            });
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(new FacebookAuthenticationOptions()
+            {
+                AppId = ConfigurationManager.AppSettings["FacebookAppId"],
+                AppSecret = ConfigurationManager.AppSettings["FacebookAppSecret"],
+                CallbackPath = new PathString(ConfigurationManager.AppSettings["FacebookRedirectUri"])
+            });
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = ConfigurationManager.AppSettings["GoogleClientId"],
+                ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"],
+                CallbackPath = new PathString(ConfigurationManager.AppSettings["GoogleRedirectUri"])
+            });;
         }
     }
 }
