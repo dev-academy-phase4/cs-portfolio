@@ -341,7 +341,6 @@
     <Content Include="Views\Jobs\Details.cshtml" />
     <Content Include="Views\Jobs\Edit.cshtml" />
     <Content Include="Views\Jobs\Index.cshtml" />
-    <Content Include="Secrets.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
