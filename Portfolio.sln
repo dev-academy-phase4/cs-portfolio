@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio", "Portfolio\Port
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioTests", "PortfolioTests\PortfolioTests.csproj", "{1CB56F9B-5510-4F2C-A259-54E478CCA49D}"
 EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "Portfolio.Azure", "Portfolio.Azure\Portfolio.Azure.ccproj", "{546EB559-48AF-4F79-AE4E-01BDB5C30A67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1CB56F9B-5510-4F2C-A259-54E478CCA49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CB56F9B-5510-4F2C-A259-54E478CCA49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CB56F9B-5510-4F2C-A259-54E478CCA49D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{546EB559-48AF-4F79-AE4E-01BDB5C30A67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{546EB559-48AF-4F79-AE4E-01BDB5C30A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{546EB559-48AF-4F79-AE4E-01BDB5C30A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{546EB559-48AF-4F79-AE4E-01BDB5C30A67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
