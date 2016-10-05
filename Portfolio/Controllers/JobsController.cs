@@ -16,12 +16,14 @@ namespace Portfolio.Controllers
         private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Jobs
+        [AllowAnonymous]
         public async Task<ActionResult> Index()
         {
             return View(await _db.Jobs.ToListAsync());
         }
 
         // GET: Jobs/Details/5
+        [AllowAnonymous]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
