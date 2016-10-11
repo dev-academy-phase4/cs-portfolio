@@ -34,6 +34,13 @@ namespace Portfolio.Migrations
                 manager.Create(user, "Admin@123");
                 manager.AddToRole(user.Id, "Admin");
             }
+
+            if (context.Users.Any(u => u.UserName == "rich.churcher@gmail.com"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                manager.Delete(context.Users.First(u => u.UserName == "richchurcher@gmail.com"));
+            }
         }
     }
 }
