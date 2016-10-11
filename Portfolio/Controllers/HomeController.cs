@@ -12,7 +12,7 @@ namespace Portfolio.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Contact details";
+            ViewBag.Message = "Keep in touch!";
 
             return View();
         }

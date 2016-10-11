@@ -2,4 +2,12 @@
     <li>@Html.ActionLink("Home", "Index", "Home")</li>
     <li>@Html.ActionLink("Work History", "Index", "Jobs")</li>
     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    @Html.Partial("_LoginPartial")
 </ul>
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+    }
+}

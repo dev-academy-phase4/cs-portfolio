@@ -29,7 +29,7 @@ namespace Portfolio.Migrations
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser { UserName = "rich.churcher@gmail.com" };
+                var user = new ApplicationUser { Email = "rich.churcher@gmail.com", UserName = "rich.churcher@gmail.com" };
 
                 manager.Create(user, "Admin@123");
                 manager.AddToRole(user.Id, "Admin");
