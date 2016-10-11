@@ -39,7 +39,7 @@ namespace Portfolio.Migrations
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
-                manager.Delete(context.Users.First(u => u.UserName == "richchurcher@gmail.com"));
+                manager.Delete(context.Users.First(u => u.UserName == "rich.churcher@gmail.com"));
             }
         }
     }
