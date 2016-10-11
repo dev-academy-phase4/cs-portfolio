@@ -25,11 +25,11 @@ namespace Portfolio.Migrations
                 manager.Create(role);
             }
 
-            if (!context.Users.Any(u => u.UserName == "rich.churcher@gmail.com"))
+            if (!context.Users.Any(u => u.UserName == "admin@example.com"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser { Email = "rich.churcher@gmail.com", UserName = "rich.churcher@gmail.com" };
+                var user = new ApplicationUser { Email = "admin@example.com", EmailConfirmed = true, UserName = "admin@example.com" };
 
                 manager.Create(user, "Admin@123");
                 manager.AddToRole(user.Id, "Admin");
