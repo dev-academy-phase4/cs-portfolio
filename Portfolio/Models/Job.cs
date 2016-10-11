@@ -12,6 +12,7 @@ namespace Portfolio.Models
         public DateTime Finish { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public Employer Employer { get; set; }
         [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed), ReadOnly(true)]
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }

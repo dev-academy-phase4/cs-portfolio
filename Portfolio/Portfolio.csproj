@@ -213,8 +213,13 @@
     <Compile Include="Migrations\201609300248459_AutoCreated.Designer.cs">
       <DependentUpon>201609300248459_AutoCreated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610111003315_employers.cs" />
+    <Compile Include="Migrations\201610111003315_employers.Designer.cs">
+      <DependentUpon>201610111003315_employers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Employer.cs" />
     <Compile Include="Models\HistoryViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Job.cs" />
@@ -358,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609300248459_AutoCreated.resx">
       <DependentUpon>201609300248459_AutoCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610111003315_employers.resx">
+      <DependentUpon>201610111003315_employers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
