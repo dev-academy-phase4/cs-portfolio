@@ -16,7 +16,19 @@ namespace Portfolio.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Index()
         {
-            return View(await _db.Jobs.Include(j => j.Employer).ToListAsync());
+            var vm = await _db.Jobs
+                .Include(j => j.Employer)
+                .Select(j => new JobViewModel
+                {
+                    Id = j.Id,
+                    Start = j.Start,
+                    Finish = j.Finish,
+                    Title = j.Title,
+                    EmployerName = j.Employer.Name,
+                    Description = j.Description
+                })
+                .ToListAsync();
+            return View(vm);
         }
 
         // GET: Jobs/Details/5
@@ -43,7 +55,7 @@ namespace Portfolio.Controllers
                 Text = e.Name,
                 Value = e.Id.ToString()
             });
-            var vm = new JobViewModel
+            var vm = new JobEditViewModel
             {
                 Employers = employers
             };
@@ -55,7 +67,7 @@ namespace Portfolio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Start,Finish,Title,EmployerId,Description")] JobViewModel vm)
+        public async Task<ActionResult> Create([Bind(Include = "Start,Finish,Title,EmployerId,Description")] JobEditViewModel vm)
         {
             if (ModelState.IsValid)
             {
