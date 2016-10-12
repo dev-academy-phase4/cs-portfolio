@@ -1,11 +1,5 @@
 ﻿@model IEnumerable<Portfolio.Models.Job>
 
-@{
-    ViewBag.Title = "Work History";
-}
-
-<h2>Index</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -19,6 +13,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employer)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -42,6 +39,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employer)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
