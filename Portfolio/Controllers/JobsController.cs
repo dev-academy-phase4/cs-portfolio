@@ -39,12 +39,24 @@ namespace Portfolio.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Job job = await _db.Jobs.FindAsync(id);
+            var job = await _db.Jobs
+                .Include(j => j.Employer)
+                .FirstOrDefaultAsync(j => j.Id == id);
             if (job == null)
             {
                 return HttpNotFound();
             }
-            return View(job);
+            var vm = new JobViewModel
+            {
+                Id = job.Id,
+                Start = job.Start,
+                Finish = job.Finish,
+                Title = job.Title,
+                EmployerName = job.Employer.Name,
+                EmployerDescription = job.Employer.Description,
+                Description = job.Description
+            };
+            return View(vm);
         }
 
         // GET: Jobs/Create
