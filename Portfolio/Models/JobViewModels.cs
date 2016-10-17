@@ -9,9 +9,9 @@ namespace Portfolio.Models
     public class JobViewModel
     {
         public int Id { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:Y}")]
         public DateTime Start { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:Y}")]
         public DateTime Finish { get; set; }
         public string Title { get; set; }
         [DisplayName("Employer")]
@@ -24,9 +24,9 @@ namespace Portfolio.Models
     public class JobEditViewModel
     {
         public int Id { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{Y}")]
         public DateTime? Start { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{Y}")]
         public DateTime? Finish { get; set; }
         public string Title { get; set; }
         public int EmployerId { get; set; }

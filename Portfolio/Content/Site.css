@@ -26,3 +26,35 @@ textarea {
 img {
     border-radius: 5px;
 }
+
+.job {
+    margin: 20px 0;
+}
+
+.job-header {
+    margin-bottom: 10px;
+}
+
+.job-date-range {
+    font-style: italic;
+    margin: 0 10px;
+}
+
+.job-title {
+    font-weight: 600;
+    font-size: larger;
+    margin: 0 10px;
+}
+
+.job-employer {
+    font-style: italic;
+    margin: 0 20px;
+}
+
+.job-description {
+    margin: 0 0 10px 20px;
+}
+
+.job-action-links {
+    margin: 0 20px;
+}

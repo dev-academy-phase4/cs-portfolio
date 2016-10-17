@@ -354,6 +354,7 @@
     <Content Include="Views\Employers\Details.cshtml" />
     <Content Include="Views\Employers\Edit.cshtml" />
     <Content Include="Views\Employers\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\JobViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

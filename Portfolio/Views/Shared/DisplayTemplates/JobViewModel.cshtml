@@ -1,0 +1,23 @@
+﻿@model Portfolio.Models.JobViewModel
+
+<div class="job">
+    <div class="job-header">
+        <span class="job-date-range">@Html.DisplayFor(model => model.Start) - @Html.DisplayFor(model => model.Finish)</span>
+        <span class="job-title">@Html.DisplayFor(model => model.Title)</span>
+        [@Html.ActionLink("Details", "Details", "Jobs", new {id = Model.Id}, null)]
+        <div class="job-employer">
+            @Html.DisplayFor(model => model.EmployerName)
+        </div>
+    </div>
+    <div class="job-description">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <div class="job-action-links">
+            @Html.ActionLink("Edit", "Edit", "Jobs", new {id = Model.Id}, null) | 
+            @Html.ActionLink("Delete", "Delete", "Jobs", new {id = Model.Id}, null)
+        </div>
+    }
+</div>
