@@ -35,10 +35,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Employer, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EmployerId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Employer, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Employer, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(m => m.EmployerId, Model.Employers, "Not Specified")
             </div>
         </div>
 

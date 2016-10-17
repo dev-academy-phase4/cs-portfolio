@@ -112,12 +112,31 @@ namespace Portfolio.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Job job = await _db.Jobs.FindAsync(id);
+            var job = await _db.Jobs
+                .Include(j => j.Employer)
+                .FirstAsync(j => j.Id == id);
             if (job == null)
             {
                 return HttpNotFound();
             }
-            return View(job);
+            var employerId = job.Employer?.Id ?? 0;
+            var employers = _db.Employers.Select(e => new SelectListItem
+            {
+                Selected = (e.Id == employerId), 
+                Text = e.Name,
+                Value = e.Id.ToString()
+            });
+            var vm = new JobEditViewModel
+            {
+                Id = job.Id,
+                Start = job.Start,
+                Finish = job.Finish,
+                Title = job.Title,
+                Description = job.Description,
+                EmployerId = employerId,
+                Employers = employers
+            };
+            return View(vm);
         }
 
         // POST: Jobs/Edit/5
@@ -125,16 +144,35 @@ namespace Portfolio.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Start,Finish,Title,Employer,Description")] Job job)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Start,Finish,Title,EmployerId,Description")] JobEditViewModel vm)
         {
-            job.Updated = DateTime.Now;
             if (ModelState.IsValid)
             {
-                _db.Entry(job).State = EntityState.Modified;
+                var job = await _db.Jobs
+                    .Include(j => j.Employer)
+                    .FirstAsync(j => j.Id == vm.Id);
+                if (job == null)
+                {
+                    return HttpNotFound();
+                }
+                if (job.Employer?.Id != vm.EmployerId)
+                {
+                    job.Employer = await _db.Employers.FindAsync(vm.EmployerId);
+                }
+                if (job.Employer == null)
+                {
+                    return HttpNotFound();
+                }
+                job.Start = vm.Start ?? job.Start;
+                job.Finish = vm.Finish ?? job.Finish;
+                job.Title = vm.Title;
+                job.Description = vm.Description;
+                job.Updated = DateTime.Now;
+
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(job);
+            return View(vm);
         }
 
         // GET: Jobs/Delete/5
