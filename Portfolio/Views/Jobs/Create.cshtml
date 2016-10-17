@@ -35,6 +35,7 @@
             @Html.LabelFor(model => model.EmployerId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(m => m.EmployerId, Model.Employers, "Not Specified")
+                [@Html.ActionLink("Create", "Create", "Employers", null, null)]
             </div>
         </div>
 

@@ -29,6 +29,7 @@ namespace Portfolio.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{Y}")]
         public DateTime? Finish { get; set; }
         public string Title { get; set; }
+        [DisplayName("Employer")]
         public int EmployerId { get; set; }
         public string Description { get; set; }
         public IEnumerable<SelectListItem> Employers { get; set; }
